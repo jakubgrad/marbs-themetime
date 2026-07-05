@@ -1,9 +1,12 @@
-CFLAGS=-O2 -Wall -Wextra -Wpedantic -lm
+CFLAGS=-O2 -Wall -Wextra -Wpedantic
+LDFLAGS=-lm
 PREFIX ?= /usr/local
 
 all: themetime
+
 themetime: themetime.c lib/locationprobe.c lib/sunriset.c
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
 clean:
 	rm -f themetime
 
